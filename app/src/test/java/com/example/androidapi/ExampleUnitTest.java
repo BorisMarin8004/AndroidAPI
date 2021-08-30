@@ -1,14 +1,16 @@
 package com.example.androidapi;
 
-import android.widget.Toast;
+import androidx.room.Room;
+
+import com.example.androidapi.API.RetrofitClient;
+import com.example.androidapi.DB.UserDAO;
+import com.example.androidapi.DB.UserDB;
+import com.example.androidapi.UtilClasses.User;
 
 import org.junit.Test;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,12 +27,12 @@ public class ExampleUnitTest {
     private List<User> api_response_body;
 
     @Test
-    public void getUsersCall_isCorrect() {
+    public void testAPI() {
         RetrofitClient retrofit = RetrofitClient.getClient();
         retrofit.getUsersCall().enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     assert response.body() != null;
                     api_response_body = response.body();
                     assertTrue(api_response_body.size() > 0);
