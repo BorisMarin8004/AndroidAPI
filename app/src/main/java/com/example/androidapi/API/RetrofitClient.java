@@ -1,13 +1,14 @@
-package com.example.androidapi;
+package com.example.androidapi.API;
+
+import com.example.androidapi.UtilClasses.User;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.example.androidapi.API.BASE_URL;
+import static com.example.androidapi.API.API.BASE_URL;
 
 public class RetrofitClient {
 
