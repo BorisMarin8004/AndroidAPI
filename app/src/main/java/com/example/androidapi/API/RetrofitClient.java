@@ -1,5 +1,6 @@
 package com.example.androidapi.API;
 
+import com.example.androidapi.UtilClasses.Post;
 import com.example.androidapi.UtilClasses.User;
 
 import java.util.List;
@@ -15,16 +16,12 @@ public class RetrofitClient {
     private API api;
     private static RetrofitClient retrofitClient;
 
-    private Call<List<User>> getUsers;
-
     private RetrofitClient(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(API.class);
-
-        getUsers = api.getUsers();
     }
 
     public static RetrofitClient getClient() {
@@ -35,7 +32,10 @@ public class RetrofitClient {
     }
 
     public Call<List<User>> getUsersCall(){
-        return getUsers;
+        return api.getUsers();
+    }
+    public Call<List<Post>> getPostsByUserIdCall(int userId) {
+        return api.getPostsByUserId(userId);
     }
 
 }

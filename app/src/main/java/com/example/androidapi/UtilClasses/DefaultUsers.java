@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface DefaultUsers {
     List<User> users = new ArrayList<>(Arrays.asList(
-            new User("user1", "passuser1"),
-            new User("user2", "passuser2"),
-            new User("user3", "passuser3")
+            new User(1, "user1", "passuser1"),
+            new User(2, "user2", "passuser2"),
+            new User(3, "user3", "passuser3")
     ));
 }

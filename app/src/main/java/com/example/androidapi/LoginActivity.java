@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,6 +18,8 @@ import com.example.androidapi.API.RetrofitClient;
 import com.example.androidapi.DB.UserDAO;
 import com.example.androidapi.DB.UserDB;
 import com.example.androidapi.UtilClasses.DefaultUsers;
+import com.example.androidapi.UtilClasses.IntentFactory;
+import com.example.androidapi.UtilClasses.Post;
 import com.example.androidapi.UtilClasses.User;
 
 import java.util.List;
@@ -31,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private UserDAO userDAO;
     private UserDB userDB;
+    private RetrofitClient retrofit;
     private User activeUser;
 
     @Override
@@ -43,29 +50,27 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.LoginBtn);
         showUsersBtn = findViewById(R.id.ShowUsersBtn);
 
-
         userDB = Room.databaseBuilder(getApplicationContext(), UserDB.class, UserDB.DB_NAME)
                 .allowMainThreadQueries()
                 .build();
         userDAO = userDB.getUserDAO();
-        setupDB(true);
+        retrofit = RetrofitClient.getClient();
+
+        setupDB(true, false);
+
+
 
         loginBtn.setOnClickListener(view -> {
             String username = usernameField.getText().toString();
             String password = passwordField.getText().toString();
 
-            Toast.makeText(getApplicationContext(), userDAO.getAllUsers().toString(), Toast.LENGTH_LONG).show();
-
             List<User> usernameMatches = userDAO.getUsersByUsername(username);
             List<User> passwordMatches = userDAO.getUsersByPassword(password);
-
-            System.out.println(usernameMatches);
-            System.out.println(passwordMatches);
 
             for (User user : usernameMatches) {
                 if (passwordMatches.contains(user)) {
                     activeUser = user;
-//                  TODO: go to intent
+                    startActivity(IntentFactory.getIntent(PostActivity.class, getApplicationContext(), activeUser));
                     break;
                 }
             }
@@ -84,12 +89,42 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void setupDB(boolean resetToDefault){
-        if (resetToDefault){
+    private void setupDB(boolean resetToDefault, boolean resetToAPI){
+        if (resetToDefault || resetToAPI) {
             userDB.clearAllTables();
         }
-        if (userDAO.getAllUsers().size() == 0){
+        if (resetToDefault) {
             userDAO.insert(DefaultUsers.users);
+            System.out.println(userDAO.getAllUsers());
+        } else if (resetToAPI) {
+            retrofit.getUsersCall().enqueue(new Callback<List<User>>() {
+                @Override
+                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+                    if (response.isSuccessful()) {
+                        assert response.body() != null;
+                        userDAO.insert(response.body());
+                        System.out.println(userDAO.getAllUsers());
+                    } else {
+                        new Exception("Request failed, code: " + response.code()).printStackTrace();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<User>> call, Throwable t) {
+                    try {
+                        throw t;
+                    } catch (Throwable throwable) {
+                        throwable.printStackTrace();
+                    }
+                }
+            });
+
         }
+    }
+
+    public static Intent getIntent(Context context, User activeUser) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.putExtra("acitveUser", (Parcelable) activeUser);
+        return intent;
     }
 }
