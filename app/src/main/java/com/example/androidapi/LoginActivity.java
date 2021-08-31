@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         showUsersBtn.setOnClickListener(view -> {
-//          TODO: go to intent
+            startActivity(IntentFactory.getIntent(ViewUsersActivity.class, getApplicationContext(), activeUser));
         });
     }
 
