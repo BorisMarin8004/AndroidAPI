@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static Intent getIntent(Context context, User activeUser) {
         Intent intent = new Intent(context, LoginActivity.class);
-        intent.putExtra("acitveUser", (Parcelable) activeUser);
+        intent.putExtra("acitveUser", activeUser);
         return intent;
     }
 }
