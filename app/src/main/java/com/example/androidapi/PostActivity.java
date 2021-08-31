@@ -40,7 +40,7 @@ public class PostActivity extends AppCompatActivity {
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
-                    ArrayAdapter<Post> postAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_post_item, response.body());
+                    ArrayAdapter<Post> postAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item, response.body());
                     listPosts.setAdapter(postAdapter);
                 } else {
                     new Exception("Request failed, code: " + response.code()).printStackTrace();
