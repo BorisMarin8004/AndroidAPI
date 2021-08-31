@@ -60,7 +60,7 @@ public class PostActivity extends AppCompatActivity {
 
     public static Intent getIntent(Context context, User activeUser) {
         Intent intent = new Intent(context, PostActivity.class);
-        intent.putExtra("activeUser", (Parcelable) activeUser);
+        intent.putExtra("activeUser", activeUser);
         return intent;
     }
 }
