@@ -1,7 +1,6 @@
 package com.example.androidapi;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -10,7 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.androidapi.DB.UserDAO;
 import com.example.androidapi.DB.UserDB;
 import com.example.androidapi.UtilClasses.DefaultUsers;
-import com.example.androidapi.UtilClasses.User;
+import com.example.androidapi.DataClasses.User;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,12 +1,8 @@
 package com.example.androidapi;
 
-import androidx.room.Room;
-
 import com.example.androidapi.API.RetrofitClient;
-import com.example.androidapi.DB.UserDAO;
-import com.example.androidapi.DB.UserDB;
-import com.example.androidapi.UtilClasses.Post;
-import com.example.androidapi.UtilClasses.User;
+import com.example.androidapi.DataClasses.Post;
+import com.example.androidapi.DataClasses.User;
 
 import org.junit.Test;
 

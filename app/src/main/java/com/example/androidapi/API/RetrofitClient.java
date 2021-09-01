@@ -1,7 +1,7 @@
 package com.example.androidapi.API;
 
-import com.example.androidapi.UtilClasses.Post;
-import com.example.androidapi.UtilClasses.User;
+import com.example.androidapi.DataClasses.Post;
+import com.example.androidapi.DataClasses.User;
 
 import java.util.List;
 

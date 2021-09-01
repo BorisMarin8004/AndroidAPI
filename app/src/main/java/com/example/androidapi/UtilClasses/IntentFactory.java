@@ -2,8 +2,8 @@ package com.example.androidapi.UtilClasses;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 
+import com.example.androidapi.DataClasses.User;
 import com.example.androidapi.LoginActivity;
 import com.example.androidapi.PostActivity;
 import com.example.androidapi.ViewUsersActivity;

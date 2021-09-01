@@ -5,10 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/base_background"
     tools:context=".ViewUsersActivity">
 
     <ListView
         android:id="@+id/ListUsers"
+        android:background="@drawable/list_background"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10sp"
+        android:requiresFadingEdge="vertical"
+        android:fadingEdgeLength="100dp"
         android:layout_width="300dp"
         android:layout_height="450dp"
         android:layout_margin="20dp"

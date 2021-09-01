@@ -2,14 +2,10 @@ package com.example.androidapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
-import androidx.room.RoomDatabase;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -19,8 +15,7 @@ import com.example.androidapi.DB.UserDAO;
 import com.example.androidapi.DB.UserDB;
 import com.example.androidapi.UtilClasses.DefaultUsers;
 import com.example.androidapi.UtilClasses.IntentFactory;
-import com.example.androidapi.UtilClasses.Post;
-import com.example.androidapi.UtilClasses.User;
+import com.example.androidapi.DataClasses.User;
 
 import java.util.List;
 

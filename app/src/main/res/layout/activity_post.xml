@@ -4,12 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/base_background"
     tools:context=".PostActivity">
 
     <ListView
         android:id="@+id/ListPosts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
+        android:requiresFadingEdge="vertical"
+        android:fadingEdgeLength="100dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10.0sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:layout_gravity="center" />
 
 </LinearLayout>

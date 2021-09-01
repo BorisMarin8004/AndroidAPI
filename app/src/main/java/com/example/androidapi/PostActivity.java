@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.androidapi.API.RetrofitClient;
-import com.example.androidapi.UtilClasses.Post;
-import com.example.androidapi.UtilClasses.User;
+import com.example.androidapi.Adapters.PostsListViewAdapter;
+import com.example.androidapi.DataClasses.Post;
+import com.example.androidapi.DataClasses.User;
 
 import java.util.List;
 
@@ -40,7 +39,7 @@ public class PostActivity extends AppCompatActivity {
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()) {
                     assert response.body() != null;
-                    ArrayAdapter<Post> postAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.list_item, response.body());
+                    PostsListViewAdapter postAdapter = new PostsListViewAdapter(getApplicationContext(), R.layout.post_list_item, response.body());
                     listPosts.setAdapter(postAdapter);
                 } else {
                     new Exception("Request failed, code: " + response.code()).printStackTrace();

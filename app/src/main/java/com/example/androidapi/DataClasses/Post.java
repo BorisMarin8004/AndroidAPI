@@ -1,4 +1,4 @@
-package com.example.androidapi.UtilClasses;
+package com.example.androidapi.DataClasses;
 
 import android.os.Parcel;
 import android.os.Parcelable;
