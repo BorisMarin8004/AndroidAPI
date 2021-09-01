@@ -2,18 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@drawable/list_item_background"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/ListItemTitle"
-        android:textSize="20sp"
+        android:textSize="@dimen/textSizeBig"
         android:textColor="@color/colorBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/ListItemBody"
-        android:textSize="15sp"
+        android:textSize="@dimen/textSizeMiddle"
         android:textColor="@color/colorBlack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

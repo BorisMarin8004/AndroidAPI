@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@drawable/base_background"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -16,12 +17,12 @@
 
         <TextView
             android:id="@+id/LoginMsg"
-            android:layout_marginBottom="120dp"
+            android:layout_marginBottom="@dimen/welcomeTextFieldMarginBottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/loginmsg"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSizeBig"
             android:textColor="@color/colorBlack"
             />
 
@@ -44,7 +45,7 @@
         <Button
             android:id="@+id/LoginBtn"
             android:text="@string/Login"
-            android:layout_margin="25dp"
+            android:layout_margin="@dimen/btnMargin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -53,6 +54,7 @@
         <Button
             android:id="@+id/ShowUsersBtn"
             android:text="@string/Show_users"
+            android:layout_margin="@dimen/btnMargin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"/>

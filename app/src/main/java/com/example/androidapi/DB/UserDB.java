@@ -3,7 +3,7 @@ package com.example.androidapi.DB;
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
-import com.example.androidapi.UtilClasses.User;
+import com.example.androidapi.DataClasses.User;
 
 @Database(version = 1, entities = {User.class})
 public abstract class UserDB extends RoomDatabase {

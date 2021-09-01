@@ -1,7 +1,6 @@
-package com.example.androidapi.UtilClasses;
+package com.example.androidapi.DataClasses;
 
 
-import android.icu.text.Replaceable;
 import android.os.Parcel;
 import android.os.Parcelable;
 

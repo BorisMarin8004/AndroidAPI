@@ -6,9 +6,6 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -16,12 +13,9 @@ import com.example.androidapi.API.RetrofitClient;
 import com.example.androidapi.DB.UserDAO;
 import com.example.androidapi.DB.UserDB;
 import com.example.androidapi.UtilClasses.DefaultUsers;
-import com.example.androidapi.UtilClasses.Post;
-import com.example.androidapi.UtilClasses.User;
-import com.example.androidapi.UtilClasses.UsersListViewAdapter;
+import com.example.androidapi.DataClasses.User;
+import com.example.androidapi.Adapters.UsersListViewAdapter;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -99,7 +93,7 @@ public class ViewUsersActivity extends AppCompatActivity {
     }
 
     private void setListView(List<User> dataSource) {
-        UsersListViewAdapter userAdapter = new UsersListViewAdapter(getApplicationContext(), R.layout.list_item, dataSource);
+        UsersListViewAdapter userAdapter = new UsersListViewAdapter(getApplicationContext(), R.layout.user_list_item, dataSource);
         listViewUsers.setAdapter(userAdapter);
     }
 

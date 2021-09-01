@@ -1,5 +1,7 @@
 package com.example.androidapi.UtilClasses;
 
+import com.example.androidapi.DataClasses.User;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
