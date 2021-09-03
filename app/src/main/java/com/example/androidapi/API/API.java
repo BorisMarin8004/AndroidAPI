@@ -9,6 +9,9 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
+/**
+ * API interface provides BASE_URL and routes that will be used by RetrofitClient to make requests to API
+ */
 public interface API {
 
     String BASE_URL = "https://jsonplaceholder.typicode.com/";

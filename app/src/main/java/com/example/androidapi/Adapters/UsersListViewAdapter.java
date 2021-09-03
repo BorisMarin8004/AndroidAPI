@@ -12,6 +12,9 @@ import com.example.androidapi.R;
 
 import java.util.List;
 
+/**
+ * UsersListViewAdapter specifies how User will be displayed in ListView
+ */
 public class UsersListViewAdapter extends ArrayAdapter<User> {
 
     private int resource;

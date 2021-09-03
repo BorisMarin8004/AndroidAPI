@@ -12,6 +12,9 @@ import com.example.androidapi.R;
 
 import java.util.List;
 
+/**
+ * PostsListViewAdapter specifies how Post will be displayed in ListView
+ */
 public class PostsListViewAdapter extends ArrayAdapter<Post> {
 
     private int resource;

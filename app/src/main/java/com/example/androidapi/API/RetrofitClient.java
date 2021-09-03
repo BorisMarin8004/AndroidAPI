@@ -11,6 +11,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.example.androidapi.API.API.BASE_URL;
 
+/**
+ * RetrofitClient uses API interface to send requests to the API.
+ * This client should be used with enqueue function in order to make async requests
+ */
 public class RetrofitClient {
 
     private API api;

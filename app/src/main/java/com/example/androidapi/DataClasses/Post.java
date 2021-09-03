@@ -5,6 +5,13 @@ import android.os.Parcelable;
 
 import java.util.Objects;
 
+/**
+ * Post object holds:
+ * userId - id of the user who created it
+ * id - id of the Post object
+ * title - Title of the Post
+ * body - body is the main text of the Post
+ */
 public class Post implements Parcelable {
     private int userId;
     private int id;

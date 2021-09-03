@@ -20,12 +20,13 @@ import static org.junit.Assert.*;
 
 /**
  * Instrumented test, which will execute on an Android device.
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
 
+    /**
+     * Tests if data on Room DB can be accessed and modified, by using DAO object and relevant methods
+     */
     @Test
     public void testDB() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -46,6 +47,9 @@ public class ExampleInstrumentedTest {
         assertEquals(0, allUsers.size());
     }
 
+    /**
+     * Tests if login works correctly and returns correct massage
+     */
     @Test
     public void testLogin() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();

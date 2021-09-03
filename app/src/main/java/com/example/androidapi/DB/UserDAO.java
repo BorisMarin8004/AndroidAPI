@@ -10,6 +10,9 @@ import com.example.androidapi.DataClasses.User;
 
 import java.util.List;
 
+/**
+ * UserDAO allows app access to Room DB, and specifies what Queries app uses on DB
+ */
 @Dao
 public interface UserDAO {
     @Insert
