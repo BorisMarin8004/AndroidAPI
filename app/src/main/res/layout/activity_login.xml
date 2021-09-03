@@ -50,6 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="@dimen/btnPadding"
+            android:background="@drawable/button_background"
+            android:textColor="@color/whiteGray"
             android:gravity="center"/>
 
         <Button
@@ -58,6 +61,10 @@
             android:layout_margin="@dimen/btnMargin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="@dimen/btnPadding"
+            android:background="@drawable/button_background"
+            android:textColor="@color/whiteGray"
+            android:layout_gravity="center"
             android:gravity="center"/>
 
     </LinearLayout>
