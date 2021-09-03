@@ -57,9 +57,9 @@ public class ExampleInstrumentedTest {
         userDB.clearAllTables();
         userDAO.insert(DefaultUsers.users);
 
-        User badUserAll = new User("badUser", "badUser");
-        User badUserUsername = new User("badUser", "passuser1");
-        User badUserPassword = new User("user1", "badUser");
+        User badUserAll = new User(1, "badUser", "badUser");
+        User badUserUsername = new User(2, "badUser", "passuser1");
+        User badUserPassword = new User(3, "user1", "badUser");
 
         assertEquals(1, loginUser(badUserAll, userDAO));
         assertEquals(2, loginUser(badUserUsername, userDAO));
