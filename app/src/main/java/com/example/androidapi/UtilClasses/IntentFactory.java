@@ -10,6 +10,9 @@ import com.example.androidapi.ViewUsersActivity;
 
 import java.util.HashMap;
 
+/**
+ * IntentFactory allows Activities to get Intents from other Activities using factory pattern
+ */
 public class IntentFactory {
 
     public static Intent getIntent(Class<?> className, Context context, User activeUser) {

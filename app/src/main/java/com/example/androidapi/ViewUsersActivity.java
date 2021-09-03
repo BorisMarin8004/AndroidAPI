@@ -24,6 +24,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * This Activity requests Users from API or retrieves them from Room DB,
+ * and displays it in ListView by using UsersListViewAdapter
+ */
 public class ViewUsersActivity extends AppCompatActivity {
 
     private static final String passwordChars = "abcdefghijklmnopqrstuvwxyz";

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Default users that can be used other users from API
+ */
 public interface DefaultUsers {
     List<User> users = new ArrayList<>(Arrays.asList(
             new User(1, "user1", "passuser1"),

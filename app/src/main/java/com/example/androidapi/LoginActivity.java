@@ -30,6 +30,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * First Activity allows users to log in or go to Activity,
+ * where user can choose to get users data from API over DefaultUsers list
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameField;
@@ -80,14 +84,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
             if (usernameMatches.size() == 0 && passwordMatches.size() == 0){
-                setEditTextColor(getApplicationContext(), usernameField, R.color.brightRedStart);
-                setEditTextColor(getApplicationContext(), passwordField, R.color.brightRedStart);
+                setEditTextColor(getApplicationContext(), usernameField, R.color.brightRed);
+                setEditTextColor(getApplicationContext(), passwordField, R.color.brightRed);
                 Toast.makeText(getApplicationContext(), "ERROR: Wrong username and password", Toast.LENGTH_LONG).show();
             } else if (usernameMatches.size() == 0) {
-                setEditTextColor(getApplicationContext(), usernameField, R.color.brightRedStart);
+                setEditTextColor(getApplicationContext(), usernameField, R.color.brightRed);
                 Toast.makeText(getApplicationContext(), "ERROR: Wrong username", Toast.LENGTH_LONG).show();
             } else if (passwordMatches.size() == 0) {
-                setEditTextColor(getApplicationContext(), passwordField, R.color.brightRedStart);
+                setEditTextColor(getApplicationContext(), passwordField, R.color.brightRed);
                 Toast.makeText(getApplicationContext(), "ERROR: Wrong password", Toast.LENGTH_LONG).show();
             }
 

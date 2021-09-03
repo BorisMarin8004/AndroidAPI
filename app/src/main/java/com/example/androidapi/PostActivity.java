@@ -18,6 +18,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * This Activity requests Posts from API using activeUsers id field,
+ * and displays it in ListView by using PostsListViewAdapter
+ */
 public class PostActivity extends AppCompatActivity {
 
     private ListView listPosts;
