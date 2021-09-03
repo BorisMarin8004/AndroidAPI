@@ -1,13 +1,20 @@
 package com.example.androidapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.androidapi.API.RetrofitClient;
@@ -45,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.LoginBtn);
         showUsersBtn = findViewById(R.id.ShowUsersBtn);
 
+        setEditTextColor(getApplicationContext(), usernameField, R.color.colorBlack);
+        setEditTextColor(getApplicationContext(), passwordField, R.color.colorBlack);
+
         userDB = Room.databaseBuilder(getApplicationContext(), UserDB.class, UserDB.DB_NAME)
                 .allowMainThreadQueries()
                 .build();
@@ -52,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
         retrofit = RetrofitClient.getClient();
 
         setupDB(true, false);
-
-
 
         loginBtn.setOnClickListener(view -> {
             String username = usernameField.getText().toString();
@@ -65,15 +73,21 @@ public class LoginActivity extends AppCompatActivity {
             for (User user : usernameMatches) {
                 if (passwordMatches.contains(user)) {
                     activeUser = user;
+                    setEditTextColor(getApplicationContext(), usernameField, R.color.colorBlack);
+                    setEditTextColor(getApplicationContext(), passwordField, R.color.colorBlack);
                     startActivity(IntentFactory.getIntent(PostActivity.class, getApplicationContext(), activeUser));
                     break;
                 }
             }
             if (usernameMatches.size() == 0 && passwordMatches.size() == 0){
+                setEditTextColor(getApplicationContext(), usernameField, R.color.brightRedStart);
+                setEditTextColor(getApplicationContext(), passwordField, R.color.brightRedStart);
                 Toast.makeText(getApplicationContext(), "ERROR: Wrong username and password", Toast.LENGTH_LONG).show();
             } else if (usernameMatches.size() == 0) {
+                setEditTextColor(getApplicationContext(), usernameField, R.color.brightRedStart);
                 Toast.makeText(getApplicationContext(), "ERROR: Wrong username", Toast.LENGTH_LONG).show();
             } else if (passwordMatches.size() == 0) {
+                setEditTextColor(getApplicationContext(), passwordField, R.color.brightRedStart);
                 Toast.makeText(getApplicationContext(), "ERROR: Wrong password", Toast.LENGTH_LONG).show();
             }
 
@@ -82,6 +96,12 @@ public class LoginActivity extends AppCompatActivity {
         showUsersBtn.setOnClickListener(view -> {
             startActivity(IntentFactory.getIntent(ViewUsersActivity.class, getApplicationContext(), activeUser));
         });
+    }
+
+    private void setEditTextColor(Context context, EditText editText, int colorValue){
+        int contextColor = ContextCompat.getColor(context, colorValue);
+        editText.setTextColor(contextColor);
+        editText.setBackgroundTintList(ColorStateList.valueOf(contextColor));
     }
 
     private void setupDB(boolean resetToDefault, boolean resetToAPI){
