@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class IntentFactory {
 
     public static Intent getIntent(Class<?> className, Context context, User activeUser) {
-        HashMap<Class<?>, Intent> intentMap =  new HashMap<Class<?>, Intent>() {{
+        HashMap<Class<?>, Intent> intentMap =  new HashMap<>() {{
             put(PostActivity.class, PostActivity.getIntent(context, activeUser));
             put(LoginActivity.class, LoginActivity.getIntent(context, activeUser));
             put(ViewUsersActivity.class, ViewUsersActivity.getIntent(context, activeUser));

@@ -1,6 +1,7 @@
 package com.example.androidapi;
 
 import android.content.Context;
+import android.content.Intent;
 
 import androidx.room.Room;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -10,6 +11,7 @@ import com.example.androidapi.DB.UserDAO;
 import com.example.androidapi.DB.UserDB;
 import com.example.androidapi.UtilClasses.DefaultUsers;
 import com.example.androidapi.DataClasses.User;
+import com.example.androidapi.UtilClasses.IntentFactory;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -76,6 +78,19 @@ public class ExampleInstrumentedTest {
         userDB.clearAllTables();
     }
 
+    @Test
+    public void testFactoryIntent(){
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        Intent intent = IntentFactory.getIntent(PostActivity.class, appContext, DefaultUsers.users.get(0));
+        assertEquals(DefaultUsers.users.get(0), intent.getParcelableExtra("activeUser"));
+
+        IntentFactory.getIntent(LoginActivity.class, appContext, DefaultUsers.users.get(0));
+        assertEquals(DefaultUsers.users.get(0), intent.getParcelableExtra("activeUser"));
+
+        IntentFactory.getIntent(ViewUsersActivity.class, appContext, DefaultUsers.users.get(0));
+        assertEquals(DefaultUsers.users.get(0), intent.getParcelableExtra("activeUser"));
+    }
+
     private static int loginUser(User user, UserDAO userDAO){
         List<User> usernameMatches = userDAO.getUsersByUsername(user.getUsername());
         List<User> passwordMatches = userDAO.getUsersByPassword(user.getPassword());
@@ -97,4 +112,6 @@ public class ExampleInstrumentedTest {
         }
         return -1;
     }
+
+
 }
