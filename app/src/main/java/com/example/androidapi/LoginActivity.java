@@ -11,6 +11,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
@@ -65,6 +66,8 @@ public class LoginActivity extends AppCompatActivity {
         userDAO = userDB.getUserDAO();
         retrofit = RetrofitClient.getClient();
 
+        Log.i("AppContext", String.valueOf(LoginActivity.class.equals(this.getClass())));
+
         setupDB(true, false);
 
         loginBtn.setOnClickListener(view -> {
@@ -114,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (resetToDefault) {
             userDAO.insert(DefaultUsers.users);
-            System.out.println(userDAO.getAllUsers());
         } else if (resetToAPI) {
             retrofit.getUsersCall().enqueue(new Callback<List<User>>() {
                 @Override
