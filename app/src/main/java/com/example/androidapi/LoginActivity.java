@@ -65,9 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         userDAO = userDB.getUserDAO();
         retrofit = RetrofitClient.getClient();
-
-        Log.i("AppContext", String.valueOf(LoginActivity.class.equals(this.getClass())));
-
+        
         setupDB(true, false);
 
         loginBtn.setOnClickListener(view -> {
