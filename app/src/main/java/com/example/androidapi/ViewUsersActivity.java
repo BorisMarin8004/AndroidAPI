@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.androidapi.API.API;
 import com.example.androidapi.API.RetrofitClient;
 import com.example.androidapi.DB.UserDAO;
 import com.example.androidapi.DB.UserDB;
@@ -36,7 +37,6 @@ public class ViewUsersActivity extends AppCompatActivity {
     private ListView listViewUsers;
     private Button switchDataSourceBtn;
 
-    private boolean APIDataSource;
     private UserDAO userDAO;
     private UserDB userDB;
     private RetrofitClient retrofit;
@@ -46,9 +46,9 @@ public class ViewUsersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_users);
 
-        APIDataSource = false;
         listViewUsers = findViewById(R.id.ListUsers);
         switchDataSourceBtn = findViewById(R.id.SwitchDataSourceBtn);
+
         setBtnText();
 
         userDB = Room.databaseBuilder(getApplicationContext(), UserDB.class, UserDB.DB_NAME)
@@ -60,18 +60,18 @@ public class ViewUsersActivity extends AppCompatActivity {
         retrofit = RetrofitClient.getClient();
 
         switchDataSourceBtn.setOnClickListener(view -> {
-            if (APIDataSource){
+            if (UserDB.dbDataSource.equals(API.class)){
                 setDBToDataSource(DefaultUsers.users);
                 setListView(userDAO.getAllUsers());
-                APIDataSource = false;
+                UserDB.dbDataSource = DefaultUsers.class;
             } else {
-                retrofit.getUsersCall().enqueue(new Callback<List<User>>() {
+                retrofit.getUsersCall().enqueue(new Callback<>() {
                     @Override
                     public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                         if (response.isSuccessful()) {
                             assert response.body() != null;
                             List<User> usersArrayList = new ArrayList<>(response.body());
-                            for (User user : usersArrayList){
+                            for (User user : usersArrayList) {
                                 user.setPassword(getRandomStr(passwordChars, passwordLength));
                             }
                             setListView(usersArrayList);
@@ -90,7 +90,7 @@ public class ViewUsersActivity extends AppCompatActivity {
                         }
                     }
                 });
-                APIDataSource = true;
+                UserDB.dbDataSource = API.class;
             }
             setBtnText();
         });
@@ -102,7 +102,7 @@ public class ViewUsersActivity extends AppCompatActivity {
     }
 
     private void setBtnText(){
-        if (APIDataSource){
+        if (UserDB.dbDataSource.equals(API.class)){
             switchDataSourceBtn.setText(R.string.SwitchDBDataSourceBtn);
         } else {
             switchDataSourceBtn.setText(R.string.SwitchAPIDataSourceBtn);
